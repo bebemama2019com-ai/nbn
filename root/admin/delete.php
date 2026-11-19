@@ -1,0 +1,56 @@
+<?php require __DIR__ . '/../_init.php'; nbn_session(); ?><html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.backstretch.min.js"></script>
+<link href="styleadmin.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div id="editbox" style="width:550px">
+<?php
+	if (nbn_post('vis') != "yes") {
+		$query_Recordset1 = "SELECT pk, name FROM firmsdata_new ORDER BY `name`, `branch`";
+		$Recordset1 = nbn_rows($query_Recordset1);
+
+?>
+	<form id="form1" name="form1" method="post" action="<?php echo e($_SERVER['PHP_SELF']); ?>"><?php echo nbn_csrf_field(); ?>
+
+Изберете фирма от 		    списъка за изтриване:<br />
+            <select name="firmpk" size="10" id="firm">
+			 	<?php 
+				foreach ($Recordset1 as $result)
+					{	$p=$result['pk'];
+						$nm=$result['name'];
+						echo "<option value=\"$p\">$nm</option>";
+					}
+				?>
+      </select>
+		   <br>
+
+            <input type="hidden" name="vis" value="yes"/>
+            <input name="txtUsername" type="hidden" id="txtUsername" value="test"/>
+            <input name="txtPassword" type="hidden" id="txtPassword" value="test"/>
+            <input type="submit" name="submit" id="submit" value="Приложи" /><br>
+            <input type="reset" name="Reset" id="button" value="Изчисти" />
+	</form>
+	<p>
+      <?php
+
+}
+else
+		{
+		nbn_require_post_csrf();
+		nbn_query("DELETE FROM `firmsdata_new` WHERE `pk` = ? LIMIT 1", [(int)nbn_post('firmpk')]);
+		echo "<p>&nbsp;</p><p class=\"centertext\">Фирмата е изтрита.<br><a href=\"index.php\">Към администрация</a></p>";
+
+}?>
+      
+      
+        </p>
+        </div>
+<script type="text/javascript">
+  $.backstretch("../images/bg_2.jpg", {speed: 1500});
+</script>
+</body>
+</html>

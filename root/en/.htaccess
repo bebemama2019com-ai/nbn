@@ -1,0 +1,32 @@
+RewriteEngine on
+RewriteBase /en/
+#пренасочване на страниците от стария сайт
+RewriteRule ^service\.php$ za-nas [R=301]
+RewriteRule ^announce\.php$ finansovi-programi [R=301]
+RewriteRule ^club_nbn\.php$ ikonomicheski-paket [R=301]
+RewriteRule ^product-cause\.php$ nashata-socialna-kauza [R=301]
+RewriteRule ^enquiry\.php$ chlenstvo [R=301]
+RewriteRule ^ppbg\.php$ politika-za-zashtita-na-lichnite-danni [R=301]
+RewriteRule ^cpbg\.php$ politika-otnosno-izpolzvaneto-na-biskvitki [R=301]
+
+#пренасочване - сео 
+RewriteRule ^about-us$ index.php [L]
+RewriteRule ^main-activities$ main-activities.php [L]
+RewriteRule ^structure$ structure.php [L]
+RewriteRule ^novini$ allnews.php [L]
+RewriteRule ^finansovi-programi$ financing.php [L]
+RewriteRule ^contact-us$ contacts.php [L]
+RewriteRule ^chlenstvo$ statute-membership.php [L]
+RewriteRule ^company-registration-in-bulgaria$ company-registration-in-bulgaria.php [L]
+RewriteRule ^sabitia$ happenings.php [L]
+RewriteRule ^nashata-socialna-kauza$ friend.php [L]
+RewriteRule ^firms-members$ firms.php [L]
+RewriteRule ^biznes-oferti$ business-offers.php [L]
+RewriteRule ^privacy-policy$ privacy-policy.php [L]
+RewriteRule ^cookie-policy$ cookie-policy.php [L]
+RewriteRule ^profile-for-international-cooperation$ business-proposal.php [L]
+ErrorDocument 404 http://nbn-bg.com/en/404.php
+# Content files edited in the admin (read by the pages, never served directly)
+<FilesMatch "^(obiavi\.php|news\.inc|recreation\.inc)$">
+    Require all denied
+</FilesMatch>

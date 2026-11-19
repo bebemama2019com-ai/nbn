@@ -1,0 +1,9 @@
+AuthType Basic
+AuthName "Protected content"
+AuthUserFile "/home/nbnbgcom/.htpasswds/www/root/admin/passwd"
+require valid-user
+#Require all granted
+# Mail template edited in the admin - not a page
+<FilesMatch "^(mailtext|mail_text)\.php$">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,1 @@
+<div id="language-selector"><a href="https://nbn-bg.com"><img src="images/bg.png"></a><a href="https://nbn-bg.com/en/"><img src="images/uk.png"></a></div>

@@ -1,0 +1,25 @@
+# real settings and secrets – only config.example.php is versioned
+/config/config.php
+/config/config.*.php
+!/config/config.example.php
+
+# logs and server noise
+error_log
+*.log
+.ftpquota
+/root/cgi-bin/
+
+# content edited live in the admin (deploy from the server copy, see README)
+/root/inc-online/*
+!/root/inc-online/.htaccess
+/root/en/inc-online/*
+!/root/en/inc-online/.htaccess
+/root/en/obiavi.php
+/root/en/news.inc
+/root/en/recreation.inc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
